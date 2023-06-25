@@ -2,13 +2,10 @@ package ru.netology.web;
 
 import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.Test;
-
-import java.security.Key;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -41,6 +38,7 @@ public class AppCardDeliveryTest {
                 .shouldBe(Condition.visible, Duration.ofSeconds(15))
                 .shouldHave(Condition.exactText("Встреча успешно забронирована на " + currentDate));
     }
+
 
 }
 
