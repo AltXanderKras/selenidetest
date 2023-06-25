@@ -39,6 +39,24 @@ public class AppCardDeliveryTest {
                 .shouldHave(Condition.exactText("Встреча успешно забронирована на " + currentDate));
     }
 
+    @Test
+    public void positiveTestCardDeliveryForm2() {
+        String currentDate = generateDate(3, "dd.MM.yyyy");
+
+        $("[data-test-id='city'] input").setValue("Санкт-Петербург");
+        $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME), Keys.DELETE);
+        $("[data-test-id='date'] input").setValue(currentDate);
+        $("[data-test-id='name'] input").setValue("Петров Петр");
+        $("[data-test-id='phone'] input").setValue("+71234567891");
+        $("[data-test-id='agreement']").click();
+        $("button.button").click();
+
+        $("[data-test-id='notification'] .notification__content")
+                .shouldBe(Condition.visible, Duration.ofSeconds(15))
+                .shouldHave(Condition.exactText("Встреча успешно забронирована на " + currentDate));
+    }
+
+
 
 }
 
